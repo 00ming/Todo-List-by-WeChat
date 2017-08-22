@@ -1,0 +1,84 @@
+/**index.wxss**/
+/* top ---start----- */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+/* top -----end------ */
+/* list -------start------- */
+
+.willDo {
+  background-color: yellow;
+  display: block;
+}
+.did {
+  display: block;
+  background: #7b7b7b;
+  color: #fff;
+}
+.didlist {
+  text-decoration:line-through;
+  color:#7b7b7b;
+ 
+}
+/* list ----------end--------- */
+
+/* bottom  -----start------ */
+.input {
+  display: inline-block;
+  border-bottom: 1px solid #d8d8d8;
+  margin-left: 60rpx;
+  margin-right: 120rpx;
+  height: 80rpx;
+  font-size: 32rpx;
+  color: #000;
+  width:70%;
+  position: absolute;
+}
+.focus {
+  border-bottom: 1px solid #9bb793;
+}
+.send.disable {
+  background-color: #7b7b7b;
+  border-color: #7b7b7b;
+}
+.send {
+  /* display: inline-block; */
+  display: inline-block;
+  position: absolute;
+  right: 020rpx;
+  background-color: #14b012;
+  width: 90rpx;
+  height: 74rpx;
+  line-height: 72rpx;
+  color: white;
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 8rpx;
+  border: 1px solid #378c37;
+  box-sizing: border-box;
+  border-radius: 25%;
+}
+
+.inputbar {
+  color: #7b7b7b;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  width: 100%;
+  border-top: 1px solid #d8d8d8;
+  background-color: #ededed;
+}
+/* bottom -----end ------- */

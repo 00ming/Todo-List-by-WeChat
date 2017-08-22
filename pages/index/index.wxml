@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class="todolist">
+    <text class="willDo">you will do....</text>
+    <checkbox-group bindchange="change">
+      <label class="checkbox" wx:for="{{list}}" wx:key="{{index}}">
+        <view wx:if="{{!item.isFinish}}" bindlongpress="start" data-msg="{{item.msg}}">
+          <checkbox value="{{item.msg}}" checked="{{item.isFinish}}" /><text>{{item.msg}}</text>
+        </view>
+         </label>
+      <text class="did">you did....</text>
+      <label class="checkbox" wx:for="{{list}}" wx:key="{{index}}">
+      <view wx:if="{{item.isFinish}}" bindlongpress="delete" data-msg="{{item.msg}}">
+        <checkbox value="{{item.msg}}" checked="{{item.isFinish}}" /><text class="didlist">{{item.msg}}</text>
+      </view>
+      </label>
+    </checkbox-group>
+  </view>
+
+
+  <view class="inputbar">
+    <view class="box">
+      <view class="send {{inputValue.length > 0 ? '' : ' disable'}}" bindtap="bindAdd">add</view>
+      <input bindinput="bindKeyInput" value="{{inputValue}}" placeholder="input what you need" bindfocus="focus" bindblur="blur" class="input{{focusFlag ? ' focus' : ''}}"/>
+    </view>
+  </view>
+</view>
