@@ -5,16 +5,7 @@ Page({
   data: {
     focusFlag:false,
     inputValue: '',
-    list: [{
-      msg: '去北京',
-      isFinish: false,
-      isImportant:false
-    },
-      {
-        msg: '去玩',
-        isFinish: true,
-        isImportant:false
-      }
+    list: [
     ],
     userInfo: {},
     hasUserInfo: true
