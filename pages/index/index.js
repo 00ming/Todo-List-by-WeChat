@@ -7,11 +7,13 @@ Page({
     inputValue: '',
     list: [{
       msg: '去北京',
-      isFinish: false
+      isFinish: false,
+      isImportant:false
     },
       {
         msg: '去玩',
-        isFinish: true
+        isFinish: true,
+        isImportant:false
       }
     ],
     userInfo: {},
@@ -46,12 +48,14 @@ Page({
       var newMsg = {
         data: '',
         msg: this.data.inputValue,
-        isFinish: false
+        isFinish: false,
+        isImportant:false
       }
       todolist.push(newMsg)
       this.setData({
         list: todolist
       })
+      this.save()
       this.setData({
         inputValue: ''
       })
@@ -71,7 +75,21 @@ Page({
   },
   // 输入框和按钮样式控制 ----------end-------
   
-  
+  start:function (e) {
+    console.log(e.currentTarget.dataset.msg)
+    var todolist = this.data.list;
+    todolist.forEach(i => {
+      if (i.msg === e.currentTarget.dataset.msg) {
+        i.isImportant = !i.isImportant;
+        return
+      }
+    })
+    this.setData({
+      list:todolist
+    })
+    this.save()
+
+  },
   // 删除
   delete:function (e) {
     wx.showModal({
@@ -80,7 +98,6 @@ Page({
       duration:1000,
       success:function(res) {
         if (res.confirm) {
-          console.log('用户点击确定')
           var todolist = this.data.list
           todolist.forEach(i => {
             if (i.msg === e.currentTarget.dataset.msg) {
@@ -91,18 +108,16 @@ Page({
           this.setData({
             list:todolist
           })
+          this.save()
         }
       }.bind(this)
     })
   },
-  start:function(e){
 
-  },
   // todolist状态改变
   change: function (e) {
     var todolist = this.data.list
     var checkArr = e.detail.value
-    console.log(checkArr)
     todolist.forEach(function (i) {
       if (checkArr.indexOf(i.msg + "") != -1) {
         i.isFinish = true
@@ -112,6 +127,14 @@ Page({
     })
     this.setData({
       list: todolist
+    })
+    this.save()
+  },
+
+  save:function () {
+    wx.setStorage({
+      key: "save",
+      data: this.data.list
     })
   },
 
@@ -124,6 +147,15 @@ Page({
       that.setData({
         userInfo: userInfo
       })
+    })
+    wx.getStorage({
+      key: 'save',
+      success: function (res) {
+        console.log(res.data)
+        this.setData({
+          list: res.data
+        })
+      }.bind(this)
     })
   }
     

@@ -18,7 +18,20 @@
 }
 /* top -----end------ */
 /* list -------start------- */
-
+.checkbox {
+  position:relative;
+}
+icon{
+  line-height: 18rpx;
+  vertical-align: bottom;
+  position: absolute;
+  top: 10rpx;
+  left: 650rpx;
+}
+ /* .content {
+  display: inline-block;
+  width: 500rpx;
+}  */
 .willDo {
   background-color: yellow;
   display: block;

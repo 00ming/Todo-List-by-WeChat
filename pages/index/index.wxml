@@ -8,11 +8,12 @@
   </view>
 
   <view class="todolist">
-    <text class="willDo">you will do....</text>
+    
     <checkbox-group bindchange="change">
+    <text class="willDo">you will do....</text>
       <label class="checkbox" wx:for="{{list}}" wx:key="{{index}}">
         <view wx:if="{{!item.isFinish}}" bindlongpress="start" data-msg="{{item.msg}}">
-          <checkbox value="{{item.msg}}" checked="{{item.isFinish}}" /><text>{{item.msg}}</text>
+          <checkbox value="{{item.msg}}" checked="{{item.isFinish}}" /><text class="content">{{item.msg}}</text><icon type="info" size="18" wx:if="{{item.isImportant}}"/>
         </view>
          </label>
       <text class="did">you did....</text>
@@ -23,12 +24,10 @@
       </label>
     </checkbox-group>
   </view>
-
-
   <view class="inputbar">
     <view class="box">
       <view class="send {{inputValue.length > 0 ? '' : ' disable'}}" bindtap="bindAdd">add</view>
-      <input bindinput="bindKeyInput" value="{{inputValue}}" placeholder="input what you need" bindfocus="focus" bindblur="blur" class="input{{focusFlag ? ' focus' : ''}}"/>
+      <input bindinput="bindKeyInput" value="{{inputValue}}" placeholder="input what you need" bindfocus="focus" bindblur="blur" class="input{{focusFlag ? ' focus' : ''}}" />
     </view>
   </view>
 </view>
